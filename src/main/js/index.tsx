@@ -23,5 +23,6 @@
  */
 
 import { binder } from "@scm-manager/ui-extensions";
+import BinaryContentRenderer from "./BinaryContentRenderer";
 
-binder.bind("", "");
+binder.bind("search.content.binary", BinaryContentRenderer);

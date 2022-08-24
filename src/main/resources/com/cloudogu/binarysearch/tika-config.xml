@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+  <parsers>
+    <parser class="org.apache.tika.parser.DefaultParser">
+<!--      Exclude this parser because it tries to access classes which are not available   -->
+      <parser-exclude class="org.apache.tika.parser.pkg.PackageParser"/>
+    </parser>
+  </parsers>
+</properties>

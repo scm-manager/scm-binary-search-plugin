@@ -22,41 +22,11 @@
  * SOFTWARE.
  */
 
-plugins {
-  id 'org.scm-manager.smp' version '0.11.2-SNAPSHOT'
-}
+package com.cloudogu.binarysearch;
 
-dependencies {
-  // define dependencies to other plugins here e.g.:
-  plugin "sonia.scm.plugins:scm-content-search-plugin:1.1.1-SNAPSHOT"
-  // optionalPlugin "sonia.scm.plugins:scm-editor-plugin:2.0.0"
+public class BinaryParsingException extends RuntimeException {
 
-  implementation('org.apache.tika:tika-core:2.4.1') {
-    exclude group: "xml-apis", module: "xml-apis"
-    exclude group: "xerces", module: "xercesImpl"
+  public BinaryParsingException(Exception exception) {
+    super("Binary parsing failed. File may be corrupted or not supported for parsing.", exception);
   }
-  implementation('org.apache.tika:tika-parsers-standard-package:2.4.1') {
-    exclude group: "xml-apis", module: "xml-apis"
-    exclude group: "xerces", module: "xercesImpl"
-  }
-}
-
-scmPlugin {
-  scmVersion = "2.38.2-SNAPSHOT"
-  displayName = "Binary Search"
-  description = "Enriches the search index with binary file content"
-
-  author = "Cloudogu GmbH"
-  category = "Information"
-  childFirstClassloader = true
-
-  openapi {
-    packages = [
-      "com.cloudogu.binarysearch"
-    ]
-  }
-}
-
-repositories {
-  mavenCentral()
 }

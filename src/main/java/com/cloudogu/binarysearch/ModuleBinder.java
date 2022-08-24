@@ -22,41 +22,17 @@
  * SOFTWARE.
  */
 
-plugins {
-  id 'org.scm-manager.smp' version '0.11.2-SNAPSHOT'
-}
+package com.cloudogu.binarysearch;
 
-dependencies {
-  // define dependencies to other plugins here e.g.:
-  plugin "sonia.scm.plugins:scm-content-search-plugin:1.1.1-SNAPSHOT"
-  // optionalPlugin "sonia.scm.plugins:scm-editor-plugin:2.0.0"
+import com.cloudogu.scm.search.BinaryFileContentResolver;
+import com.google.inject.AbstractModule;
+import sonia.scm.plugin.Extension;
 
-  implementation('org.apache.tika:tika-core:2.4.1') {
-    exclude group: "xml-apis", module: "xml-apis"
-    exclude group: "xerces", module: "xercesImpl"
+@Extension
+public class ModuleBinder extends AbstractModule {
+
+  @Override
+  protected void configure() {
+    bind(BinaryFileContentResolver.class).to(BinaryContentResolver.class);
   }
-  implementation('org.apache.tika:tika-parsers-standard-package:2.4.1') {
-    exclude group: "xml-apis", module: "xml-apis"
-    exclude group: "xerces", module: "xercesImpl"
-  }
-}
-
-scmPlugin {
-  scmVersion = "2.38.2-SNAPSHOT"
-  displayName = "Binary Search"
-  description = "Enriches the search index with binary file content"
-
-  author = "Cloudogu GmbH"
-  category = "Information"
-  childFirstClassloader = true
-
-  openapi {
-    packages = [
-      "com.cloudogu.binarysearch"
-    ]
-  }
-}
-
-repositories {
-  mavenCentral()
 }
