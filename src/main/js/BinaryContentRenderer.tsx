@@ -22,37 +22,21 @@
  * SOFTWARE.
  */
 
-plugins {
-  id 'org.scm-manager.smp' version '0.11.2-SNAPSHOT'
-}
+import React, { FC } from "react";
+import { HitProps, TextHitField } from "@scm-manager/ui-components";
+import { useTranslation } from "react-i18next";
 
-dependencies {
-  // define dependencies to other plugins here e.g.:
-  plugin "sonia.scm.plugins:scm-content-search-plugin:1.1.1-SNAPSHOT"
-  // optionalPlugin "sonia.scm.plugins:scm-editor-plugin:2.0.0"
+const BinaryContentRenderer: FC<HitProps> = ({ hit }) => {
+  const [t] = useTranslation("plugins");
+  return (
+    <pre>
+      <code>
+        <TextHitField hit={hit} field="content" truncateValueAt={1024}>
+          {t("scm-content-search-plugin.hit.empty")}
+        </TextHitField>
+      </code>
+    </pre>
+  );
+};
 
-  implementation('org.apache.tika:tika-core:2.4.1') {
-    exclude group: "xml-apis", module: "xml-apis"
-    exclude group: "xerces", module: "xercesImpl"
-  }
-  implementation('org.apache.tika:tika-parsers-standard-package:2.4.1') {
-    exclude group: "xml-apis", module: "xml-apis"
-    exclude group: "xerces", module: "xercesImpl"
-  }
-}
-
-scmPlugin {
-  scmVersion = "2.38.2-SNAPSHOT"
-  displayName = "Binary Search"
-  description = "Enriches the search index with binary file content"
-
-  author = "Cloudogu GmbH"
-  category = "Information"
-  childFirstClassloader = true
-
-  openapi {
-    packages = [
-      "com.cloudogu.binarysearch"
-    ]
-  }
-}
+export default BinaryContentRenderer;
