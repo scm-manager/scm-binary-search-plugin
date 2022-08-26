@@ -56,7 +56,3 @@ scmPlugin {
     ]
   }
 }
-
-repositories {
-  mavenCentral()
-}

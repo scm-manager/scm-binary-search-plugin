@@ -54,7 +54,7 @@ public class BinaryContentResolver implements BinaryFileContentResolver {
       return handler.toString();
 
     } catch (Exception e) {
-      LOG.debug("Failed to parse binary file", e);
+      LOG.warn("Failed to parse binary file", e);
       return "";
     }
   }
