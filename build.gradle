@@ -23,7 +23,7 @@
  */
 
 plugins {
-  id 'org.scm-manager.smp' version '0.11.2-SNAPSHOT'
+  id 'org.scm-manager.smp' version '0.12.0'
 }
 
 dependencies {
