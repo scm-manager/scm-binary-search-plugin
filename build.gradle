@@ -42,7 +42,7 @@ dependencies {
 }
 
 scmPlugin {
-  scmVersion = "2.38.2-SNAPSHOT"
+  scmVersion = "2.39.0"
   displayName = "Binary Search"
   description = "Enriches the search index with binary file content"
 
