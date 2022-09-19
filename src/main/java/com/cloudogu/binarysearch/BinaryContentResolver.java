@@ -29,7 +29,9 @@ import org.apache.commons.codec.Resources;
 import org.apache.tika.config.TikaConfig;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
+import org.apache.tika.mime.MediaType;
 import org.apache.tika.parser.AutoDetectParser;
+import org.apache.tika.parser.ParseContext;
 import org.apache.tika.sax.BodyContentHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +40,7 @@ import sonia.scm.plugin.Extension;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Set;
 
 @Extension
 public class BinaryContentResolver implements BinaryFileContentResolver {
@@ -56,6 +59,16 @@ public class BinaryContentResolver implements BinaryFileContentResolver {
     } catch (Exception e) {
       LOG.warn("Failed to parse binary file", e);
       return "";
+    }
+  }
+
+  @Override
+  public boolean isSupported(String contentType) {
+    try {
+      Set<MediaType> supportedTypes = new AutoDetectParser(createTikaConfig()).getSupportedTypes(new ParseContext());
+      return supportedTypes.stream().anyMatch(mt -> mt.toString().equals(contentType));
+    } catch (Exception e) {
+      return false;
     }
   }
 

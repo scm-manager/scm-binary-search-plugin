@@ -1,0 +1,2 @@
+- type: fixed
+  description: Adapt api change and fix injection issue ([#2](https://github.com/scm-manager/scm-binary-search-plugin/pull/2))
