@@ -28,7 +28,7 @@ plugins {
 
 dependencies {
   // define dependencies to other plugins here e.g.:
-  plugin "sonia.scm.plugins:scm-content-search-plugin:1.1.1-SNAPSHOT"
+  plugin "sonia.scm.plugins:scm-content-search-plugin:1.2.1"
   // optionalPlugin "sonia.scm.plugins:scm-editor-plugin:2.0.0"
 
   implementation('org.apache.tika:tika-core:2.4.1') {
