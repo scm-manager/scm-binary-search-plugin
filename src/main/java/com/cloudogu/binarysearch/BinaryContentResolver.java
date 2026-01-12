@@ -17,7 +17,6 @@
 package com.cloudogu.binarysearch;
 
 import com.cloudogu.scm.search.BinaryFileContentResolver;
-import org.apache.commons.codec.Resources;
 import org.apache.tika.config.TikaConfig;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
@@ -65,6 +64,6 @@ public class BinaryContentResolver implements BinaryFileContentResolver {
   }
 
   private static TikaConfig createTikaConfig() throws TikaException, IOException, SAXException {
-    return new TikaConfig(Resources.getInputStream("com/cloudogu/binarysearch/tika-config.xml"));
+    return new TikaConfig(TikaConfig.class.getClassLoader().getResourceAsStream("com/cloudogu/binarysearch/tika-config.xml"));
   }
 }

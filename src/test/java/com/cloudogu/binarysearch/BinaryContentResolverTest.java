@@ -16,7 +16,6 @@
 
 package com.cloudogu.binarysearch;
 
-import org.apache.commons.codec.Resources;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -30,7 +29,7 @@ class BinaryContentResolverTest {
 
   @Test
   void shouldParsePdfContent() throws IOException {
-    try (InputStream stream = Resources.getInputStream("com/cloudogu/binarysearch/sample.pdf")) {
+    try (InputStream stream = getClass().getClassLoader().getResourceAsStream("com/cloudogu/binarysearch/sample.pdf")) {
       String content = contentResolver.resolveContent(stream);
 
       assertThat(content).contains("Lorem Ipsum");
@@ -39,7 +38,7 @@ class BinaryContentResolverTest {
 
   @Test
   void shouldParseDocxContent() throws IOException {
-    try (InputStream stream = Resources.getInputStream("com/cloudogu/binarysearch/sample.docx")) {
+    try (InputStream stream = getClass().getClassLoader().getResourceAsStream("com/cloudogu/binarysearch/sample.docx")) {
       String content = contentResolver.resolveContent(stream);
 
       assertThat(content).contains("hitchhikers secret");
@@ -48,7 +47,7 @@ class BinaryContentResolverTest {
 
   @Test
   void shouldParseXlsxContent() throws IOException {
-    try (InputStream stream = Resources.getInputStream("com/cloudogu/binarysearch/sample.xlsx")) {
+    try (InputStream stream = getClass().getClassLoader().getResourceAsStream("com/cloudogu/binarysearch/sample.xlsx")) {
       String content = contentResolver.resolveContent(stream);
 
       assertThat(content)
@@ -63,7 +62,7 @@ class BinaryContentResolverTest {
 
   @Test
   void shouldParsePptxContent() throws IOException {
-    try (InputStream stream = Resources.getInputStream("com/cloudogu/binarysearch/sample.pptx")) {
+    try (InputStream stream = getClass().getClassLoader().getResourceAsStream("com/cloudogu/binarysearch/sample.pptx")) {
       String content = contentResolver.resolveContent(stream);
 
       assertThat(content).contains("Nice presentation");
@@ -72,7 +71,7 @@ class BinaryContentResolverTest {
 
   @Test
   void shouldParseMp3Content() throws IOException {
-    try (InputStream stream = Resources.getInputStream("com/cloudogu/binarysearch/sample.mp3")) {
+    try (InputStream stream = getClass().getClassLoader().getResourceAsStream("com/cloudogu/binarysearch/sample.mp3")) {
       String content = contentResolver.resolveContent(stream);
 
       assertThat(content).contains("Kevin MacLeod");

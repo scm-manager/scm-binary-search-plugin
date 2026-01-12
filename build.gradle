@@ -23,18 +23,18 @@ dependencies {
   plugin "sonia.scm.plugins:scm-content-search-plugin:1.2.1"
   // optionalPlugin "sonia.scm.plugins:scm-editor-plugin:2.0.0"
 
-  implementation('org.apache.tika:tika-core:2.4.1') {
+  implementation('org.apache.tika:tika-core:3.2.2') {
     exclude group: "xml-apis", module: "xml-apis"
     exclude group: "xerces", module: "xercesImpl"
   }
-  implementation('org.apache.tika:tika-parsers-standard-package:2.4.1') {
+  implementation('org.apache.tika:tika-parsers-standard-package:3.2.2') {
     exclude group: "xml-apis", module: "xml-apis"
     exclude group: "xerces", module: "xercesImpl"
   }
 }
 
 scmPlugin {
-  scmVersion = "3.0.0"
+  scmVersion = "3.11.2"
   displayName = "Binary Search"
   description = "Enriches the search index with binary file content"
 
