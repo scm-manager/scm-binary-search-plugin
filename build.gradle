@@ -19,22 +19,20 @@ plugins {
 }
 
 dependencies {
-  // define dependencies to other plugins here e.g.:
-  plugin "sonia.scm.plugins:scm-content-search-plugin:1.2.1"
-  // optionalPlugin "sonia.scm.plugins:scm-editor-plugin:2.0.0"
+  plugin "sonia.scm.plugins:scm-content-search-plugin:4.0.0-SNAPSHOT"
 
-  implementation('org.apache.tika:tika-core:3.2.2') {
+  implementation('org.apache.tika:tika-core:3.2.3') {
     exclude group: "xml-apis", module: "xml-apis"
     exclude group: "xerces", module: "xercesImpl"
   }
-  implementation('org.apache.tika:tika-parsers-standard-package:3.2.2') {
+  implementation('org.apache.tika:tika-parsers-standard-package:3.2.3') {
     exclude group: "xml-apis", module: "xml-apis"
     exclude group: "xerces", module: "xercesImpl"
   }
 }
 
 scmPlugin {
-  scmVersion = "3.11.2"
+  scmVersion = "4.0.0-SNAPSHOT"
   displayName = "Binary Search"
   description = "Enriches the search index with binary file content"
 
